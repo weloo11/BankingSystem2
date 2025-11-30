@@ -1,6 +1,6 @@
 namespace EmployeeApp
 {
-    partial class CertificateApprovalForm
+    partial class AccountApprovalForm
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -16,47 +16,47 @@ namespace EmployeeApp
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
-            this.dgvCertificates = new System.Windows.Forms.DataGridView();
+            this.dgvAccounts = new System.Windows.Forms.DataGridView();
             this.btnApprove = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCertificates)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
             this.SuspendLayout();
 
-            // dgvCertificates
-            this.dgvCertificates.AllowUserToAddRows = false;
-            this.dgvCertificates.AllowUserToDeleteRows = false;
-            this.dgvCertificates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCertificates.Location = new System.Drawing.Point(20, 20);
-            this.dgvCertificates.Size = new System.Drawing.Size(600, 300);
-            this.dgvCertificates.ReadOnly = true;
-            this.dgvCertificates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            // dgvAccounts
+            this.dgvAccounts.AllowUserToAddRows = false;
+            this.dgvAccounts.AllowUserToDeleteRows = false;
+            this.dgvAccounts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAccounts.Location = new System.Drawing.Point(20, 20);
+            this.dgvAccounts.Size = new System.Drawing.Size(600, 300);
+            this.dgvAccounts.ReadOnly = true;
+            this.dgvAccounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 
             // btnApprove
             this.btnApprove.Location = new System.Drawing.Point(150, 340);
             this.btnApprove.Size = new System.Drawing.Size(140, 40);
-            this.btnApprove.Text = "Approve Certificate";
+            this.btnApprove.Text = "Approve Account";
             this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
 
             // btnReject
             this.btnReject.Location = new System.Drawing.Point(330, 340);
             this.btnReject.Size = new System.Drawing.Size(140, 40);
-            this.btnReject.Text = "Reject Certificate";
+            this.btnReject.Text = "Reject Account";
             this.btnReject.Click += new System.EventHandler(this.btnReject_Click);
 
-            // CertificateApprovalForm
+            // AccountApprovalForm
             this.ClientSize = new System.Drawing.Size(650, 410);
-            this.Controls.Add(this.dgvCertificates);
+            this.Controls.Add(this.dgvAccounts);
             this.Controls.Add(this.btnApprove);
             this.Controls.Add(this.btnReject);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Certificate Approvals";
-            this.Load += new System.EventHandler(this.CertificateApprovalForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCertificates)).EndInit();
+            this.Text = "Account Approvals";
+            this.Load += new System.EventHandler(this.AccountApprovalForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).EndInit();
             this.ResumeLayout(false);
         }
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvCertificates;
+        private System.Windows.Forms.DataGridView dgvAccounts;
         private System.Windows.Forms.Button btnApprove;
         private System.Windows.Forms.Button btnReject;
     }
