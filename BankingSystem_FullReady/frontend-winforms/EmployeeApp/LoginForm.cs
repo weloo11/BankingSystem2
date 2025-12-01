@@ -1,17 +1,30 @@
 using System;
 using System.Windows.Forms;
-using EmployeeApp.Services;
-using EmployeeApp.Models;
 
 namespace EmployeeApp
 {
     public partial class LoginForm : Form
     {
-        private readonly EmployeeService _employeeService = new EmployeeService();
-
         public LoginForm()
         {
             InitializeComponent();
+
+            this.WindowState = FormWindowState.Maximized;
+            this.Resize += (s, e) => CenterControls();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            CenterControls();
+        }
+
+        private void CenterControls()
+        {
+            int centerX = (this.ClientSize.Width - panelLogin.Width) / 2;
+            int centerY = (this.ClientSize.Height - panelLogin.Height) / 2;
+
+            panelLogin.Left = centerX;
+            panelLogin.Top = centerY;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -21,15 +34,16 @@ namespace EmployeeApp
 
             if (id == "" || pass == "")
             {
-                MessageBox.Show("Please enter both Employee ID and Password.");
+                MessageBox.Show("Please fill in both fields.");
                 return;
             }
 
-            Employee emp = _employeeService.Login(id, pass);
+            var service = new Services.EmployeeService();
+            var emp = service.Login(id, pass);
 
             if (emp == null)
             {
-                MessageBox.Show("Invalid Credentials!");
+                MessageBox.Show("Invalid credentials.");
                 return;
             }
 
