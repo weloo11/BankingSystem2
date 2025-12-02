@@ -1,19 +1,19 @@
 using System;
 using System.Windows.Forms;
-using EmployeeApp.Services;
 using EmployeeApp.Models;
+using EmployeeApp.Services;
 
 namespace EmployeeApp
 {
     public partial class AccountApprovalForm : Form
     {
-        private readonly AccountService _accountService = new AccountService();
         private readonly Employee _employee;
+        private readonly AccountService _accountService = new AccountService();
 
-        public AccountApprovalForm(Employee emp)
+        public AccountApprovalForm(Employee employee)
         {
             InitializeComponent();
-            _employee = emp;
+            _employee = employee;
         }
 
         private void AccountApprovalForm_Load(object sender, EventArgs e)
@@ -23,42 +23,33 @@ namespace EmployeeApp
 
         private void LoadPendingAccounts()
         {
+            dgvAccounts.AutoGenerateColumns = true;
             dgvAccounts.DataSource = _accountService.GetPendingAccounts();
-        }
-
-        private string GetSelectedAccountID()
-        {
-            if (dgvAccounts.SelectedRows.Count == 0)
-                return null;
-
-            return dgvAccounts.SelectedRows[0].Cells["AccountID"].Value.ToString();
         }
 
         private void btnApprove_Click(object sender, EventArgs e)
         {
-            string accountID = GetSelectedAccountID();
-            if (accountID == null)
-            {
-                MessageBox.Show("Please select an account.");
+            if (dgvAccounts.SelectedRows.Count == 0)
                 return;
-            }
 
-            _accountService.ApproveAccount(accountID, _employee.EmployeeID);
-            MessageBox.Show("Account Approved!");
+            string accountID = dgvAccounts.SelectedRows[0].Cells["AccountID"].Value.ToString();
+
+            Card card = _accountService.GenerateCard();
+            _accountService.ApproveAccount(accountID, card);
+
+            MessageBox.Show("Account approved and card generated.");
             LoadPendingAccounts();
         }
 
         private void btnReject_Click(object sender, EventArgs e)
         {
-            string accountID = GetSelectedAccountID();
-            if (accountID == null)
-            {
-                MessageBox.Show("Please select an account.");
+            if (dgvAccounts.SelectedRows.Count == 0)
                 return;
-            }
 
-            _accountService.RejectAccount(accountID, _employee.EmployeeID);
-            MessageBox.Show("Account Rejected.");
+            string accountID = dgvAccounts.SelectedRows[0].Cells["AccountID"].Value.ToString();
+
+            _accountService.RejectAccount(accountID);
+            MessageBox.Show("Account rejected.");
             LoadPendingAccounts();
         }
     }

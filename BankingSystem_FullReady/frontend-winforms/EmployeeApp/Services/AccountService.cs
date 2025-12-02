@@ -1,6 +1,7 @@
+using System;
+using System.Collections.Generic;
 using MongoDB.Driver;
 using EmployeeApp.Models;
-using System.Collections.Generic;
 
 namespace EmployeeApp.Services
 {
@@ -19,22 +20,54 @@ namespace EmployeeApp.Services
             return _accounts.Find(a => a.Status == "Pending").ToList();
         }
 
-        public void ApproveAccount(string accountID, string employeeID)
+        public List<Account> GetAccountsByCustomer(string customerID)
+        {
+            return _accounts.Find(a => a.CustomerID == customerID).ToList();
+        }
+
+        public void ApproveAccount(string accountID, Card card)
         {
             var update = Builders<Account>.Update
                 .Set(a => a.Status, "Active")
-                .Set(a => a.EmployeeID, employeeID);
+                .Set(a => a.Card, card);
 
             _accounts.UpdateOne(a => a.AccountID == accountID, update);
         }
 
-        public void RejectAccount(string accountID, string employeeID)
+        public void RejectAccount(string accountID)
         {
             var update = Builders<Account>.Update
-                .Set(a => a.Status, "Rejected")
-                .Set(a => a.EmployeeID, employeeID);
+                .Set(a => a.Status, "Rejected");
 
             _accounts.UpdateOne(a => a.AccountID == accountID, update);
+        }
+
+        public void UpdateStatus(string accountID, string status)
+        {
+            var update = Builders<Account>.Update
+                .Set(a => a.Status, status);
+
+            _accounts.UpdateOne(a => a.AccountID == accountID, update);
+        }
+
+        public Card GenerateCard()
+        {
+            var rnd = new Random();
+            string cardNo = "";
+            for (int i = 0; i < 16; i++)
+            {
+                cardNo += rnd.Next(0, 10).ToString();
+            }
+
+            string cvv = rnd.Next(100, 999).ToString();
+
+            return new Card
+            {
+                CardNo = cardNo,
+                Pin = "1234", // default PIN – you can change this to random as well
+                Cvv = cvv,
+                ExpiryDate = DateTime.Now.AddYears(5)
+            };
         }
     }
 }

@@ -13,21 +13,14 @@ namespace EmployeeApp
             InitializeComponent();
             _loggedEmployee = emp;
 
-            // Full-screen window
             this.WindowState = FormWindowState.Maximized;
-
-            // Re-center controls when window size changes
             this.Resize += EmployeeHomeForm_Resize;
         }
 
         private void EmployeeHomeForm_Load(object sender, EventArgs e)
         {
             lblWelcome.Text = $"Welcome, {_loggedEmployee.Name} ({_loggedEmployee.EmployeeID})";
-
-            // Profile button text
             btnProfileMenu.Text = _loggedEmployee.Name + " ▼";
-
-            // All employees can add employees now (no admin check)
 
             CenterControls();
         }
@@ -45,10 +38,9 @@ namespace EmployeeApp
             btnApproveLoans.Left = centerX;
             btnApproveCertificates.Left = centerX;
             btnAddEmployee.Left = centerX;
+            btnSearchCustomers.Left = centerX;
 
-            // Keep profile menu at top right
             btnProfileMenu.Left = this.ClientSize.Width - btnProfileMenu.Width - 20;
-
             lblWelcome.Left = 40;
         }
 
@@ -72,9 +64,13 @@ namespace EmployeeApp
             new AddEmployeeForm().Show();
         }
 
+        private void btnSearchCustomers_Click(object sender, EventArgs e)
+        {
+            new CustomerSearchForm().Show();
+        }
+
         private void btnProfileMenu_Click(object sender, EventArgs e)
         {
-            // Open dropdown just below the button
             contextProfile.Show(btnProfileMenu, 0, btnProfileMenu.Height);
         }
 
@@ -90,11 +86,8 @@ namespace EmployeeApp
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Go back to login form
             var login = new LoginForm();
             login.Show();
-
-            // Close only the dashboard
             this.Close();
         }
     }

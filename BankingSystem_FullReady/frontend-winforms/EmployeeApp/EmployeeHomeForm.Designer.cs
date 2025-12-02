@@ -26,6 +26,7 @@ namespace EmployeeApp
             this.btnApproveLoans = new System.Windows.Forms.Button();
             this.btnApproveCertificates = new System.Windows.Forms.Button();
             this.btnAddEmployee = new System.Windows.Forms.Button();
+            this.btnSearchCustomers = new System.Windows.Forms.Button();
 
             this.contextProfile = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.viewProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -33,21 +34,19 @@ namespace EmployeeApp
 
             this.SuspendLayout();
 
-            // ===========================
-            // HEADER PANEL
-            // ===========================
+            // panelHeader
             this.panelHeader.BackColor = System.Drawing.Color.FromArgb(40, 60, 90);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Height = 80;
 
-            // Title label
+            // lblTitle
             this.lblTitle.Text = "Employee Dashboard";
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblTitle.Location = new System.Drawing.Point(20, 20);
             this.lblTitle.AutoSize = true;
 
-            // Profile menu button
+            // btnProfileMenu
             this.btnProfileMenu.Text = "Profile ▼";
             this.btnProfileMenu.BackColor = System.Drawing.Color.FromArgb(60, 120, 200);
             this.btnProfileMenu.ForeColor = System.Drawing.Color.White;
@@ -56,15 +55,13 @@ namespace EmployeeApp
             this.btnProfileMenu.FlatAppearance.BorderSize = 0;
             this.btnProfileMenu.Size = new System.Drawing.Size(180, 35);
             this.btnProfileMenu.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
-            this.btnProfileMenu.Location = new System.Drawing.Point(700, 20); // initial, moved at runtime
+            this.btnProfileMenu.Location = new System.Drawing.Point(700, 20);
             this.btnProfileMenu.Click += new System.EventHandler(this.btnProfileMenu_Click);
 
             this.panelHeader.Controls.Add(this.lblTitle);
             this.panelHeader.Controls.Add(this.btnProfileMenu);
 
-            // ===========================
-            // PROFILE CONTEXT MENU
-            // ===========================
+            // contextProfile
             this.contextProfile.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
                 this.viewProfileToolStripMenuItem,
                 this.logoutToolStripMenuItem
@@ -76,16 +73,12 @@ namespace EmployeeApp
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
 
-            // ===========================
-            // WELCOME LABEL
-            // ===========================
+            // lblWelcome
             this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.lblWelcome.Location = new System.Drawing.Point(40, 110);
             this.lblWelcome.AutoSize = true;
 
-            // ===========================
-            // MAIN BUTTONS (STYLE + POSITION)
-            // ===========================
+            // buttons
             SetupButton(this.btnApproveAccounts, "Approve Customer Accounts", 160);
             this.btnApproveAccounts.Click += new System.EventHandler(this.btnApproveAccounts_Click);
 
@@ -98,9 +91,10 @@ namespace EmployeeApp
             SetupButton(this.btnAddEmployee, "Add New Employee", 370);
             this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
 
-            // ===========================
-            // FORM PROPERTIES
-            // ===========================
+            SetupButton(this.btnSearchCustomers, "Search Customers", 440);
+            this.btnSearchCustomers.Click += new System.EventHandler(this.btnSearchCustomers_Click);
+
+            // form
             this.BackColor = System.Drawing.Color.FromArgb(230, 235, 245);
             this.ClientSize = new System.Drawing.Size(900, 600);
             this.Controls.Add(this.panelHeader);
@@ -109,6 +103,7 @@ namespace EmployeeApp
             this.Controls.Add(this.btnApproveLoans);
             this.Controls.Add(this.btnApproveCertificates);
             this.Controls.Add(this.btnAddEmployee);
+            this.Controls.Add(this.btnSearchCustomers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "EmployeeHomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -119,7 +114,6 @@ namespace EmployeeApp
             this.PerformLayout();
         }
 
-        // Helper to style buttons consistently
         private void SetupButton(System.Windows.Forms.Button button, string text, int top)
         {
             button.Text = text;
@@ -143,6 +137,7 @@ namespace EmployeeApp
         private System.Windows.Forms.Button btnApproveLoans;
         private System.Windows.Forms.Button btnApproveCertificates;
         private System.Windows.Forms.Button btnAddEmployee;
+        private System.Windows.Forms.Button btnSearchCustomers;
 
         private System.Windows.Forms.ContextMenuStrip contextProfile;
         private System.Windows.Forms.ToolStripMenuItem viewProfileToolStripMenuItem;
