@@ -1,0 +1,279 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\withdrawform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:withdrawform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\services\\mongoconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:services\\mongoconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\withdrawform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:withdrawform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\depositform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:depositform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\depositform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:depositform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\depositform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:depositform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\services\\collections.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:services\\collections.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\services\\atm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:services\\atm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\atmwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:atmwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\atmwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:atmwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\atmwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:atmwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\services\\accountservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:services\\accountservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|d:\\adb\\project2\\bankingsystem_fullready\\frontend-winforms\\atmapp\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{804F9D9B-CB71-482E-AE0B-595C920D7140}|ATMApp.csproj|solutionrelative:models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MongoConnection.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Services\\MongoConnection.cs",
+              "RelativeDocumentMoniker": "Services\\MongoConnection.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Services\\MongoConnection.cs",
+              "RelativeToolTip": "Services\\MongoConnection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:27:10.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WithdrawForm.Designer.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\WithdrawForm.Designer.cs",
+              "RelativeDocumentMoniker": "WithdrawForm.Designer.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\WithdrawForm.Designer.cs",
+              "RelativeToolTip": "WithdrawForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:29:12.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WithdrawForm.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\WithdrawForm.cs",
+              "RelativeDocumentMoniker": "WithdrawForm.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\WithdrawForm.cs",
+              "RelativeToolTip": "WithdrawForm.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAiwBAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:29:08.242Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DepositForm.cs [Design]",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\DepositForm.cs",
+              "RelativeDocumentMoniker": "DepositForm.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\DepositForm.cs [Design]",
+              "RelativeToolTip": "DepositForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:28:51.412Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DepositForm.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\DepositForm.cs",
+              "RelativeDocumentMoniker": "DepositForm.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\DepositForm.cs",
+              "RelativeToolTip": "DepositForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:21:17.888Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DepositForm.Designer.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\DepositForm.Designer.cs",
+              "RelativeDocumentMoniker": "DepositForm.Designer.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\DepositForm.Designer.cs",
+              "RelativeToolTip": "DepositForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:28:25.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:20:53.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Account.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Models\\Account.cs",
+              "RelativeDocumentMoniker": "Models\\Account.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Models\\Account.cs",
+              "RelativeToolTip": "Models\\Account.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAcwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:26:46.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "collections.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Services\\collections.cs",
+              "RelativeDocumentMoniker": "Services\\collections.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Services\\collections.cs",
+              "RelativeToolTip": "Services\\collections.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:27:21.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Atm.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Services\\Atm.cs",
+              "RelativeDocumentMoniker": "Services\\Atm.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Services\\Atm.cs",
+              "RelativeToolTip": "Services\\Atm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:37:24.877Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ATMWindow.Designer.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\ATMWindow.Designer.cs",
+              "RelativeDocumentMoniker": "ATMWindow.Designer.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\ATMWindow.Designer.cs",
+              "RelativeToolTip": "ATMWindow.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:25:10.551Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ATMWindow.cs [Design]",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\ATMWindow.cs",
+              "RelativeDocumentMoniker": "ATMWindow.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\ATMWindow.cs [Design]",
+              "RelativeToolTip": "ATMWindow.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:27:39.498Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ATMWindow.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\ATMWindow.cs",
+              "RelativeDocumentMoniker": "ATMWindow.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\ATMWindow.cs",
+              "RelativeToolTip": "ATMWindow.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAiwD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:21:01.662Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "accountservices.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Services\\accountservices.cs",
+              "RelativeDocumentMoniker": "Services\\accountservices.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Services\\accountservices.cs",
+              "RelativeToolTip": "Services\\accountservices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:27:29.256Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Models\\Transaction.cs",
+              "RelativeDocumentMoniker": "Models\\Transaction.cs",
+              "ToolTip": "D:\\ADB\\project2\\BankingSystem_FullReady\\frontend-winforms\\ATMApp\\Models\\Transaction.cs",
+              "RelativeToolTip": "Models\\Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:26:53.866Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
