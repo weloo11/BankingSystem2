@@ -25,7 +25,7 @@ namespace EmployeeApp.Services
             return _accounts.Find(a => a.CustomerID == customerID).ToList();
         }
 
-        public void ApproveAccount(string accountID, Card card)
+        public void ApproveAccount(string accountID, CardInfo card)
         {
             var update = Builders<Account>.Update
                 .Set(a => a.Status, "Active")
@@ -50,7 +50,7 @@ namespace EmployeeApp.Services
             _accounts.UpdateOne(a => a.AccountID == accountID, update);
         }
 
-        public Card GenerateCard()
+        public CardInfo GenerateCard()
         {
             var rnd = new Random();
             string cardNo = "";
@@ -61,10 +61,10 @@ namespace EmployeeApp.Services
 
             string cvv = rnd.Next(100, 999).ToString();
 
-            return new Card
+            return new CardInfo
             {
                 CardNo = cardNo,
-                Pin = "1234", // default PIN – you can change this to random as well
+                Pin = "1234",
                 Cvv = cvv,
                 ExpiryDate = DateTime.Now.AddYears(5)
             };

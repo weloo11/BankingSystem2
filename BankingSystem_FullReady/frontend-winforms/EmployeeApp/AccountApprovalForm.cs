@@ -34,7 +34,7 @@ namespace EmployeeApp
 
             string accountID = dgvAccounts.SelectedRows[0].Cells["AccountID"].Value.ToString();
 
-            Card card = _accountService.GenerateCard();
+            CardInfo card = _accountService.GenerateCard();
             _accountService.ApproveAccount(accountID, card);
 
             MessageBox.Show("Account approved and card generated.");
