@@ -1,16 +1,38 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+Atmservices
 
-namespace ATMApp.Models
+using MongoDB.Driver;
+using ATMApp.Models;
+
+namespace ATMApp.Services
 {
-    public class ATMModel
+    public static class ATMServices
     {
-        // This matches the MongoDB field name _id EXACTLY
-        [BsonId]
-        [BsonElement("_id")]
-        public ObjectId _id { get; set; }
+        private static readonly IMongoCollection<ATMModel> _atmCollection;
 
-        [BsonElement("atmID")]
-        public string atmID { get; set; }
+        static ATMServices()
+        {
+            _atmCollection = MongoConnection.GetDatabase()
+                .GetCollection<ATMModel>("ATM");
+        }
+
+        public static ATMModel GetATM(string atmID)
+        {
+            return _atmCollection.Find(a => a.atmID == atmID).FirstOrDefault();
+        }
+
+        public static bool ValidateATM(string atmID)
+        {
+            var atm = GetATM(atmID);
+            return atm != null;
+        }
+
+        public static bool IsATMActive(string atmID)
+        {
+            var atm = GetATM(atmID);
+            if (atm == null)
+                return false;
+
+            return atm.status == "Active";
+        }
     }
 }
