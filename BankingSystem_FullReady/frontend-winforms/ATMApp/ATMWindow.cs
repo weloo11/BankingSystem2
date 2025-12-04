@@ -15,7 +15,7 @@ namespace ATMApp
             InitializeComponent();
         }
 
-        private void btnEnterATM_Click(object sender, EventArgs e)
+        private void BtnEnterATM_Click(object sender, EventArgs e)
         {
             string atmID = txtATMID.Text.Trim();
 
@@ -57,5 +57,28 @@ namespace ATMApp
             var form = new WithdrawForm(currentAccount, currentATM);
             form.ShowDialog();
         }
+        private void btnEnterATM_Click(object sender, EventArgs e)
+        {
+            string atmID = txtATMID.Text.Trim();
+
+            var atm = ATMServices.GetATM(atmID);
+
+            if (atm == null)
+            {
+                MessageBox.Show("ATM not found.");
+                return;
+            }
+
+            if (atm.status == "Maintenance")
+            {
+                MessageBox.Show("This ATM is under maintenance. Please try another ATM.");
+                return;
+            }
+
+            currentATM = atmID;
+            MessageBox.Show("ATM Verified. Enter Account Info.");
+        }
+
     }
+
 }
