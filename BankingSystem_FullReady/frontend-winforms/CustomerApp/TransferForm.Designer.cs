@@ -1,12 +1,15 @@
-using System.ComponentModel;
-
 namespace CustomerApp
 {
     partial class TransferForm
     {
-        private IContainer components = null;
+        private System.ComponentModel.IContainer components = null;
 
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.DataGridView dgvTransactions;
+        private System.Windows.Forms.Label lblTransferTitle;
+        private System.Windows.Forms.Label lblToCard;
         private System.Windows.Forms.TextBox txtToCardNo;
+        private System.Windows.Forms.Label lblAmount;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Button btnTransfer;
 
@@ -15,35 +18,25 @@ namespace CustomerApp
         private System.Windows.Forms.Button btnDeposits;
         private System.Windows.Forms.Button btnWithdrawals;
 
-        private System.Windows.Forms.Label lblCard;
-        private System.Windows.Forms.Label lblAmount;
-        private System.Windows.Forms.Label lblHistory;
-
-        private System.Windows.Forms.DataGridView dgvTransactions;
-
-        private System.Windows.Forms.Panel panelTop;
-        private System.Windows.Forms.Panel panelBottom;
-
         protected override void Dispose(bool disposing)
         {
-            if (disposing && components != null)
+            if (disposing && (components != null))
                 components.Dispose();
-
             base.Dispose(disposing);
         }
 
         private void InitializeComponent()
         {
-            this.components = new Container();
+            this.components = new System.ComponentModel.Container();
 
-            this.panelTop = new System.Windows.Forms.Panel();
-            this.panelBottom = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.dgvTransactions = new System.Windows.Forms.DataGridView();
 
-            this.lblCard = new System.Windows.Forms.Label();
-            this.lblAmount = new System.Windows.Forms.Label();
-            this.lblHistory = new System.Windows.Forms.Label();
-
+            this.lblTransferTitle = new System.Windows.Forms.Label();
+            this.lblToCard = new System.Windows.Forms.Label();
             this.txtToCardNo = new System.Windows.Forms.TextBox();
+
+            this.lblAmount = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
 
             this.btnTransfer = new System.Windows.Forms.Button();
@@ -53,117 +46,156 @@ namespace CustomerApp
             this.btnDeposits = new System.Windows.Forms.Button();
             this.btnWithdrawals = new System.Windows.Forms.Button();
 
-            this.dgvTransactions = new System.Windows.Forms.DataGridView();
-
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactions)).BeginInit();
             this.SuspendLayout();
 
-            // ----------------------------
-            // FORM SETTINGS
-            // ----------------------------
-            this.BackColor = System.Drawing.Color.FromArgb(220, 235, 250);
-            this.ClientSize = new System.Drawing.Size(900, 700);
-            this.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.Text = "Transfer Money";
+            // ============================================================
+            // TITLE
+            // ============================================================
+            this.lblTitle.Text = "Money Transfers & Transactions";
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(30, 90, 180);
+            this.lblTitle.Location = new System.Drawing.Point(20, 15);
+            this.lblTitle.AutoSize = true;
 
-            // ----------------------------
-            // PANELS
-            // ----------------------------
-            this.panelTop.BackColor = System.Drawing.Color.FromArgb(30, 90, 160);
-            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTop.Height = 60;
+            // ============================================================
+            // DATAGRIDVIEW
+            // ============================================================
+            this.dgvTransactions.Location = new System.Drawing.Point(20, 60);
+            this.dgvTransactions.Size = new System.Drawing.Size(760, 300);
+            this.dgvTransactions.ReadOnly = true;
+            this.dgvTransactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTransactions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTransactions.AllowUserToAddRows = false;
+            this.dgvTransactions.AllowUserToDeleteRows = false;
+            this.dgvTransactions.MultiSelect = false;
+            this.dgvTransactions.AutoGenerateColumns = false;
 
-            this.panelBottom.BackColor = System.Drawing.Color.FromArgb(90, 140, 200);
-            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Height = 6;
+            var colType = new System.Windows.Forms.DataGridViewTextBoxColumn
+            {
+                HeaderText = "Type",
+                DataPropertyName = "Type",
+                ReadOnly = true
+            };
 
-            // ----------------------------
-            // LABELS
-            // ----------------------------
-            this.lblCard.Text = "Receiver Card Number:";
-            this.lblCard.Location = new System.Drawing.Point(40, 80);
+            var colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn
+            {
+                HeaderText = "Amount",
+                DataPropertyName = "Amount",
+                ReadOnly = true
+            };
 
-            this.lblAmount.Text = "Amount:";
-            this.lblAmount.Location = new System.Drawing.Point(40, 140);
+            var colDate = new System.Windows.Forms.DataGridViewTextBoxColumn
+            {
+                HeaderText = "Date",
+                DataPropertyName = "Date",
+                ReadOnly = true
+            };
 
-            this.lblHistory.Text = "Transaction History";
-            this.lblHistory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblHistory.Location = new System.Drawing.Point(40, 260);
+            var colAccount = new System.Windows.Forms.DataGridViewTextBoxColumn
+            {
+                HeaderText = "Account",
+                DataPropertyName = "AccountID",   // IMPORTANT
+                ReadOnly = true
+            };
 
-            // ----------------------------
-            // INPUTS
-            // ----------------------------
-            this.txtToCardNo.Location = new System.Drawing.Point(40, 105);
-            this.txtToCardNo.Size = new System.Drawing.Size(300, 27);
+            var colCard = new System.Windows.Forms.DataGridViewTextBoxColumn
+            {
+                HeaderText = "Card",
+                DataPropertyName = "CardNo",      // IMPORTANT
+                ReadOnly = true
+            };
 
-            this.txtAmount.Location = new System.Drawing.Point(40, 165);
-            this.txtAmount.Size = new System.Drawing.Size(300, 27);
+            this.dgvTransactions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[]
+            {
+                colType, colAmount, colDate, colAccount, colCard
+            });
 
-            // ----------------------------
-            // TRANSFER BUTTON
-            // ----------------------------
-            this.btnTransfer.Text = "Transfer Money";
-            this.btnTransfer.BackColor = System.Drawing.Color.FromArgb(30, 110, 190);
-            this.btnTransfer.ForeColor = System.Drawing.Color.White;
-            this.btnTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTransfer.Size = new System.Drawing.Size(300, 40);
-            this.btnTransfer.Location = new System.Drawing.Point(40, 205);
-            this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
-
-            // ----------------------------
+            // ============================================================
             // FILTER BUTTONS
-            // ----------------------------
+            // ============================================================
             this.btnAll.Text = "All";
-            this.btnAll.Location = new System.Drawing.Point(40, 310);
-            this.btnAll.Size = new System.Drawing.Size(80, 35);
+            this.btnAll.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnAll.Location = new System.Drawing.Point(20, 370);
+            this.btnAll.Size = new System.Drawing.Size(100, 32);
             this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
 
             this.btnTransfers.Text = "Transfers";
-            this.btnTransfers.Location = new System.Drawing.Point(130, 310);
-            this.btnTransfers.Size = new System.Drawing.Size(100, 35);
+            this.btnTransfers.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnTransfers.Location = new System.Drawing.Point(130, 370);
+            this.btnTransfers.Size = new System.Drawing.Size(120, 32);
             this.btnTransfers.Click += new System.EventHandler(this.btnTransfers_Click);
 
             this.btnDeposits.Text = "Deposits";
-            this.btnDeposits.Location = new System.Drawing.Point(240, 310);
-            this.btnDeposits.Size = new System.Drawing.Size(100, 35);
+            this.btnDeposits.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDeposits.Location = new System.Drawing.Point(260, 370);
+            this.btnDeposits.Size = new System.Drawing.Size(120, 32);
             this.btnDeposits.Click += new System.EventHandler(this.btnDeposits_Click);
 
             this.btnWithdrawals.Text = "Withdrawals";
-            this.btnWithdrawals.Location = new System.Drawing.Point(350, 310);
-            this.btnWithdrawals.Size = new System.Drawing.Size(120, 35);
+            this.btnWithdrawals.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnWithdrawals.Location = new System.Drawing.Point(390, 370);
+            this.btnWithdrawals.Size = new System.Drawing.Size(150, 32);
             this.btnWithdrawals.Click += new System.EventHandler(this.btnWithdrawals_Click);
 
-            // ----------------------------
-            // TRANSACTION GRID
-            // ----------------------------
-            this.dgvTransactions.Location = new System.Drawing.Point(40, 360);
-            this.dgvTransactions.Size = new System.Drawing.Size(820, 300);
-            this.dgvTransactions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            // ============================================================
+            // TRANSFER SECTION
+            // ============================================================
+            this.lblTransferTitle.Text = "Make a Transfer";
+            this.lblTransferTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTransferTitle.ForeColor = System.Drawing.Color.FromArgb(30, 90, 180);
+            this.lblTransferTitle.Location = new System.Drawing.Point(20, 430);
+            this.lblTransferTitle.AutoSize = true;
 
-            // ----------------------------
-            // ADD CONTROLS
-            // ----------------------------
-            this.Controls.Add(this.panelTop);
-            this.Controls.Add(this.panelBottom);
+            this.lblToCard.Text = "To Card No:";
+            this.lblToCard.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblToCard.Location = new System.Drawing.Point(25, 470);
+            this.lblToCard.AutoSize = true;
 
-            this.Controls.Add(this.lblCard);
-            this.Controls.Add(this.lblAmount);
-            this.Controls.Add(this.lblHistory);
+            this.txtToCardNo.Location = new System.Drawing.Point(120, 465);
+            this.txtToCardNo.Size = new System.Drawing.Size(200, 28);
 
-            this.Controls.Add(this.txtToCardNo);
-            this.Controls.Add(this.txtAmount);
-            this.Controls.Add(this.btnTransfer);
+            this.lblAmount.Text = "Amount:";
+            this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblAmount.Location = new System.Drawing.Point(25, 510);
+            this.lblAmount.AutoSize = true;
+
+            this.txtAmount.Location = new System.Drawing.Point(120, 505);
+            this.txtAmount.Size = new System.Drawing.Size(200, 28);
+
+            this.btnTransfer.Text = "Transfer";
+            this.btnTransfer.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnTransfer.Location = new System.Drawing.Point(340, 505);
+            this.btnTransfer.Size = new System.Drawing.Size(120, 32);
+            this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
+
+            // ============================================================
+            // FORM
+            // ============================================================
+            this.ClientSize = new System.Drawing.Size(800, 580);
+            this.Controls.Add(this.lblTitle);
+
+            this.Controls.Add(this.dgvTransactions);
 
             this.Controls.Add(this.btnAll);
             this.Controls.Add(this.btnTransfers);
             this.Controls.Add(this.btnDeposits);
             this.Controls.Add(this.btnWithdrawals);
 
-            this.Controls.Add(this.dgvTransactions);
+            this.Controls.Add(this.lblTransferTitle);
+            this.Controls.Add(this.lblToCard);
+            this.Controls.Add(this.txtToCardNo);
+            this.Controls.Add(this.lblAmount);
+            this.Controls.Add(this.txtAmount);
+            this.Controls.Add(this.btnTransfer);
+
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Money Transfer";
 
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
     }
-}
+} 

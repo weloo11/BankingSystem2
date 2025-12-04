@@ -44,9 +44,10 @@ namespace CustomerApp
 
         private void btnCertificates_Click(object sender, EventArgs e)
         {
-            var f = new CertificateForm(_customer, _account);
+            var f = new CertificateForm(_account.accountID);
             f.Show();
         }
+
 
         private void btnLoans_Click(object sender, EventArgs e)
         {
@@ -56,8 +57,9 @@ namespace CustomerApp
 
         private void btnStatements_Click(object sender, EventArgs e)
         {
-            var f = new MonthlyStatementForm(_customer, _account);
+            var f = new MonthlyStatementForm(_account.accountID);
             f.Show();
+
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -65,6 +67,11 @@ namespace CustomerApp
             var login = new LoginForm();
             login.Show();
             this.Hide();
+        }
+
+        private void CustomerHomeForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

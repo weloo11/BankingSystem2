@@ -13,21 +13,18 @@ namespace CustomerApp
         private readonly Customer _customer;
         private readonly Account _account;
 
-        private readonly IMongoCollection<CustomerApp.Models.Transaction> _transactions;
+        private readonly IMongoCollection<Transaction> _transactions;
         private readonly IMongoCollection<Account> _accounts;
 
         private string _currentFilter = "All";
 
-        // ============================================================
-        //   FIXED CONSTRUCTOR
-        // ============================================================
         public TransferForm(Customer customer, Account account)
         {
             _customer = customer;
             _account = account;
 
             var db = MongoConnection.GetDatabase();
-            _transactions = db.GetCollection<CustomerApp.Models.Transaction>("Transaction");
+            _transactions = db.GetCollection<Transaction>("Transaction");
             _accounts = db.GetCollection<Account>("Account");
 
             InitializeComponent();
@@ -35,15 +32,15 @@ namespace CustomerApp
         }
 
         // ============================================================
-        //   TRANSFER MONEY
+        //   TRANSFER BUTTON
         // ============================================================
         private void btnTransfer_Click(object sender, EventArgs e)
         {
             string receiverCardNo = txtToCardNo.Text.Trim();
 
-            if (!double.TryParse(txtAmount.Text, out double amount))
+            if (!double.TryParse(txtAmount.Text, out double amount) || amount <= 0)
             {
-                MessageBox.Show("Enter a valid amount");
+                MessageBox.Show("Enter a valid amount.");
                 return;
             }
 
@@ -62,6 +59,9 @@ namespace CustomerApp
             }
         }
 
+        // ============================================================
+        //   TRANSFER LOGIC
+        // ============================================================
         private bool TransferMoney(string senderAccID, string receiverCardNo, double amount)
         {
             var sender = _accounts.Find(a => a.accountID == senderAccID).FirstOrDefault();
@@ -79,28 +79,31 @@ namespace CustomerApp
 
             _accounts.UpdateOne(
                 a => a.accountID == receiver.accountID,
-                Builders<Account>.Update.Inc(a => a.balance, amount));
+                Builders<Account>.Update.Inc(a => a.balance, +amount));
 
-            // Insert transactions into DB
+            // Insert logs
             InsertTransaction(sender.accountID, "Sent Money", amount);
             InsertTransaction(receiver.accountID, "Received Money", amount);
 
             return true;
         }
 
+        // ============================================================
+        //   INSERT TRANSACTION (NO ATM REQUIRED)
+        // ============================================================
         private void InsertTransaction(string accID, string type, double amount)
         {
-            var newT = new CustomerApp.Models.Transaction
+            var t = new Transaction
             {
                 transactionID = Guid.NewGuid().ToString(),
                 accountID = accID,
-                atmID = "ATM01",
+                atmID = "NONE",
                 date = DateTime.Now,
                 amount = amount,
                 type = type
             };
 
-            _transactions.InsertOne(newT);
+            _transactions.InsertOne(t);
         }
 
         // ============================================================
@@ -108,68 +111,56 @@ namespace CustomerApp
         // ============================================================
         private void LoadTransactions()
         {
-            var pipeline = new System.Collections.Generic.List<BsonDocument>();
-
-            // Match account
-            pipeline.Add(new BsonDocument("$match",
-                new BsonDocument("accountID", _account.accountID)));
-
-            // Filter by type
-            if (_currentFilter == "Deposits")
+            var pipeline = new System.Collections.Generic.List<BsonDocument>
             {
+                new BsonDocument("$match",
+                    new BsonDocument("accountID", _account.accountID))
+            };
+
+            // Filter
+            if (_currentFilter == "Deposits")
                 pipeline.Add(new BsonDocument("$match",
                     new BsonDocument("type", "Deposit")));
-            }
+
             else if (_currentFilter == "Withdrawals")
-            {
                 pipeline.Add(new BsonDocument("$match",
                     new BsonDocument("type", "Withdraw")));
-            }
+
             else if (_currentFilter == "Transfers")
-            {
                 pipeline.Add(new BsonDocument("$match",
                     new BsonDocument("type",
                         new BsonDocument("$in",
                             new BsonArray { "Sent Money", "Received Money" }))));
-            }
 
-            // Join with Account collection
-            pipeline.Add(
-                new BsonDocument("$lookup",
-                    new BsonDocument
-                    {
-                        { "from", "Account" },
-                        { "localField", "accountID" },
-                        { "foreignField", "accountID" },
-                        { "as", "AccountInfo" }
-                    })
-            );
+            pipeline.Add(new BsonDocument("$lookup",
+                new BsonDocument
+                {
+                    { "from", "Account" },
+                    { "localField", "accountID" },
+                    { "foreignField", "accountID" },
+                    { "as", "AccountInfo" }
+                }));
 
             pipeline.Add(new BsonDocument("$unwind", "$AccountInfo"));
             pipeline.Add(new BsonDocument("$sort", new BsonDocument("date", -1)));
 
-            // Projection
-            pipeline.Add(
-                new BsonDocument("$project",
-                    new BsonDocument
-                    {
-                        { "_id", 0 },
-                        { "Type", "$type" },
-                        { "Amount", "$amount" },
-                        { "ATM", "$atmID" },
-                        { "AccountID", "$accountID" },
-                        { "CardNo", "$AccountInfo.card.cardNo" },
-                        {
-                            "Date",
-                            new BsonDocument("$dateToString",
-                                new BsonDocument
-                                {
-                                    { "format", "%Y-%m-%d %H:%M" },
-                                    { "date", "$date" }
-                                })
-                        }
-                    })
-            );
+            pipeline.Add(new BsonDocument("$project",
+                new BsonDocument
+                {
+                    { "_id", 0 },
+                    { "Type", "$type" },
+                    { "Amount", "$amount" },
+                    { "Date",
+                        new BsonDocument("$dateToString",
+                            new BsonDocument
+                            {
+                                { "format", "%Y-%m-%d %H:%M" },
+                                { "date", "$date" }
+                            })
+                    },
+                    { "AccountID", "$accountID" },
+                    { "CardNo", "$AccountInfo.card.cardNo" }
+                }));
 
             var results = _transactions.Aggregate<BsonDocument>(pipeline).ToList();
 
@@ -178,7 +169,6 @@ namespace CustomerApp
                 {
                     Type = t["Type"].AsString,
                     Amount = t["Amount"].ToDouble(),
-                    ATM = t["ATM"].AsString,
                     Date = t["Date"].AsString,
                     AccountID = t["AccountID"].AsString,
                     CardNo = t["CardNo"].AsString
@@ -213,4 +203,4 @@ namespace CustomerApp
             LoadTransactions();
         }
     }
-}
+} 
