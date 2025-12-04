@@ -10,19 +10,23 @@ namespace CustomerApp
 {
     public partial class TransferForm : Form
     {
-        private readonly string _currentAccountID;
+        private readonly Customer _customer;
+        private readonly Account _account;
 
         private readonly IMongoCollection<CustomerApp.Models.Transaction> _transactions;
         private readonly IMongoCollection<Account> _accounts;
 
         private string _currentFilter = "All";
 
-        public TransferForm(string accountID)
+        // ============================================================
+        //   FIXED CONSTRUCTOR
+        // ============================================================
+        public TransferForm(Customer customer, Account account)
         {
-            _currentAccountID = accountID;
+            _customer = customer;
+            _account = account;
 
             var db = MongoConnection.GetDatabase();
-
             _transactions = db.GetCollection<CustomerApp.Models.Transaction>("Transaction");
             _accounts = db.GetCollection<Account>("Account");
 
@@ -43,7 +47,7 @@ namespace CustomerApp
                 return;
             }
 
-            bool ok = TransferMoney(_currentAccountID, receiverCardNo, amount);
+            bool ok = TransferMoney(_account.accountID, receiverCardNo, amount);
 
             if (ok)
             {
@@ -69,13 +73,15 @@ namespace CustomerApp
             if (sender.balance < amount) return false;
 
             // Update balances
-            _accounts.UpdateOne(a => a.accountID == sender.accountID,
+            _accounts.UpdateOne(
+                a => a.accountID == sender.accountID,
                 Builders<Account>.Update.Inc(a => a.balance, -amount));
 
-            _accounts.UpdateOne(a => a.accountID == receiver.accountID,
+            _accounts.UpdateOne(
+                a => a.accountID == receiver.accountID,
                 Builders<Account>.Update.Inc(a => a.balance, amount));
 
-            // Transactions
+            // Insert transactions into DB
             InsertTransaction(sender.accountID, "Sent Money", amount);
             InsertTransaction(receiver.accountID, "Received Money", amount);
 
@@ -86,7 +92,6 @@ namespace CustomerApp
         {
             var newT = new CustomerApp.Models.Transaction
             {
-                _id = null,
                 transactionID = Guid.NewGuid().ToString(),
                 accountID = accID,
                 atmID = "ATM01",
@@ -105,10 +110,11 @@ namespace CustomerApp
         {
             var pipeline = new System.Collections.Generic.List<BsonDocument>();
 
+            // Match account
             pipeline.Add(new BsonDocument("$match",
-                new BsonDocument("accountID", _currentAccountID)));
+                new BsonDocument("accountID", _account.accountID)));
 
-            // Apply filter
+            // Filter by type
             if (_currentFilter == "Deposits")
             {
                 pipeline.Add(new BsonDocument("$match",
@@ -121,15 +127,13 @@ namespace CustomerApp
             }
             else if (_currentFilter == "Transfers")
             {
-                pipeline.Add(
-                    new BsonDocument("$match",
-                        new BsonDocument("type",
-                            new BsonDocument("$in",
-                                new BsonArray { "Sent Money", "Received Money" })))
-                );
+                pipeline.Add(new BsonDocument("$match",
+                    new BsonDocument("type",
+                        new BsonDocument("$in",
+                            new BsonArray { "Sent Money", "Received Money" }))));
             }
 
-            // Lookup account info
+            // Join with Account collection
             pipeline.Add(
                 new BsonDocument("$lookup",
                     new BsonDocument
@@ -142,7 +146,6 @@ namespace CustomerApp
             );
 
             pipeline.Add(new BsonDocument("$unwind", "$AccountInfo"));
-
             pipeline.Add(new BsonDocument("$sort", new BsonDocument("date", -1)));
 
             // Projection
